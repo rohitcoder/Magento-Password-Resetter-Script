@@ -1,0 +1,5 @@
+SET @SALT = '12'; # CHANGE SALT HERE IF YOU WANT OR LEAVE IT
+SET @PASS = 'mypass'; # YOUR NEW PASSWORD HERE
+SET @USERNAME = 'admin'; # YOUR ADMIN USERNAME IF YOU DONT KNOW GOTO admin_user database and look for username column
+
+UPDATE admin_user SET password = CONCAT(MD5(CONCAT( @SALT , @PASS) ), CONCAT(":", @SALT )) WHERE username = @USERNAME;
